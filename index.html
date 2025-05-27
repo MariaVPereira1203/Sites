@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Clique se você é besta</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    button {
+      margin-top: 150px;
+      font-size: 2em;
+      padding: 20px 40px;
+      background-color: red;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 10px red;
+    }
+
+    button:hover {
+      background-color: darkred;
+    }
+
+    #texto {
+      margin-top: 50px;
+      font-size: 3em;
+      color: green;
+      white-space: pre-wrap;
+      max-width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+	font-family: 'Courier New', monospace;
+    }
+
+    .alerta {
+      position: absolute;
+      top: 100%;
+      font-size: 2em;
+      color: red;
+      animation: subir 5s linear infinite;
+    }
+
+    @keyframes subir {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button onclick="mostrarTexto()">CLIQUE SE VOCÊ É BESTA</button>
+
+  <div id="texto"></div>
+
+  <script>
+    const mensagem = "Todo dia sai na rua um malandro e um otário, se chegou aqui, sinto muito. Brincadeira, irmão.Te amo rs";
+    let index = 0;
+
+    function mostrarTexto() {
+      const textoDiv = document.getElementById("texto");
+      textoDiv.innerHTML = "";
+      index = 0;
+      digitarTexto();
+    }
+
+    function digitarTexto() {
+      if (index < mensagem.length) {
+        document.getElementById("texto").innerHTML += mensagem.charAt(index);
+        index++;
+        setTimeout(digitarTexto, 50);
+      }
+    }
+
+    function criarIconePerigo() {
+      const icone = document.createElement("div");
+      icone.classList.add("alerta");
+      icone.style.left = Math.random() * 100 + "vw";
+      icone.innerText = "☠️";
+      document.body.appendChild(icone);
+      setTimeout(() => icone.remove(), 6000);
+    }
+
+    setInterval(criarIconePerigo, 300);
+  </script>
+</body>
+</html>
