@@ -30,15 +30,21 @@
       background-color: darkred;
     }
 
-    #texto {
+    #surpresa {
+      display: none;
       margin-top: 50px;
-      font-size: 3em;
-      color: green;
-      white-space: pre-wrap;
+    }
+
+    #surpresa img {
       max-width: 80%;
-      margin-left: auto;
-      margin-right: auto;
-	font-family: 'Courier New', monospace;
+      border: 4px solid red;
+      border-radius: 10px;
+    }
+
+    #surpresa p {
+      color: red;
+      font-size: 2em;
+      margin-top: 20px;
     }
 
     .alerta {
@@ -62,27 +68,16 @@
   </style>
 </head>
 <body>
-  <button onclick="mostrarTexto()">CLIQUE SE VOCÊ É BESTA</button>
+  <button onclick="mostrarSurpresa()">CLIQUE SE VOCÊ É BESTA</button>
 
-  <div id="texto"></div>
+  <div id="surpresa">
+    <img src="montagem_engracada.jpg" alt="Otário">
+    <p>OTÁRIO</p>
+  </div>
 
   <script>
-    const mensagem = "Todo dia sai na rua um malandro e um otário, se chegou aqui, sinto muito. Brincadeira, irmão.Te amo rs";
-    let index = 0;
-
-    function mostrarTexto() {
-      const textoDiv = document.getElementById("texto");
-      textoDiv.innerHTML = "";
-      index = 0;
-      digitarTexto();
-    }
-
-    function digitarTexto() {
-      if (index < mensagem.length) {
-        document.getElementById("texto").innerHTML += mensagem.charAt(index);
-        index++;
-        setTimeout(digitarTexto, 50);
-      }
+    function mostrarSurpresa() {
+      document.getElementById("surpresa").style.display = "block";
     }
 
     function criarIconePerigo() {
